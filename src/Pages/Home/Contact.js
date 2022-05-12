@@ -21,19 +21,19 @@ const Contact = () => {
               <input
                 type="text"
                 placeholder="Email address"
-                class="input input-bordered input-sm w-full max-w-md my-2"
+                className="input input-bordered input-sm w-full max-w-md my-2"
               />
             </div>
             <div>
               <input
                 type="text"
                 placeholder="Subject"
-                class="input input-bordered input-sm w-full max-w-md my-2"
+                className="input input-bordered input-sm w-full max-w-md my-2"
               />
             </div>
             <div>
               <textarea
-                class="textarea textarea-bordered w-full max-w-md my-2"
+                className="textarea textarea-bordered w-full max-w-md my-2"
                 placeholder="Bio"
               ></textarea>
             </div>
