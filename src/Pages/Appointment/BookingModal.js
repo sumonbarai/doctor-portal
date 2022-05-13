@@ -17,16 +17,16 @@ const BookingModal = ({ treatment, selected, setTreatment }) => {
   };
   return (
     <div>
-      <input type="checkbox" id="my-modal-3" class="modal-toggle" />
-      <div class="modal">
-        <div class="modal-box relative">
+      <input type="checkbox" id="my-modal-3" className="modal-toggle" />
+      <div className="modal">
+        <div className="modal-box relative">
           <label
             for="my-modal-3"
-            class="btn btn-sm btn-circle absolute right-2 top-2"
+            className="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕
           </label>
-          <h3 class="text-lg font-bold text-secondary mb-3">{name}</h3>
+          <h3 className="text-lg font-bold text-secondary mb-3">{name}</h3>
           <div>
             <form
               className="grid grid-cols-1  gap-3"
@@ -36,7 +36,7 @@ const BookingModal = ({ treatment, selected, setTreatment }) => {
                 type="text"
                 name="date"
                 placeholder="Type here"
-                class="input input-bordered w-full "
+                className="input input-bordered w-full "
                 value={format(selected, "PP")}
                 disabled
               />
@@ -50,24 +50,24 @@ const BookingModal = ({ treatment, selected, setTreatment }) => {
               <input
                 type="text"
                 placeholder="Full Name"
-                class="input input-bordered w-full "
+                className="input input-bordered w-full "
                 name="name"
               />
               <input
                 type="text"
                 placeholder="Phone Number"
-                class="input input-bordered w-full "
+                className="input input-bordered w-full "
                 name="number"
               />
               <input
                 type="email"
                 placeholder="Email"
-                class="input input-bordered w-full "
+                className="input input-bordered w-full "
                 name="email"
               />
               <input
                 type="submit"
-                class="input input-bordered w-full  btn btn-primary bg-gradient-to-r from-secondary to-primary text-white uppercase"
+                className="input input-bordered w-full  btn btn-primary bg-gradient-to-r from-secondary to-primary text-white uppercase"
                 value="submit"
               />
             </form>
