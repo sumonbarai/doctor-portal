@@ -5,12 +5,14 @@ import auth from "../../firebase.init";
 import { useForm } from "react-hook-form";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import Spinner from "../Shared/Spinner/Spinner";
+import useToken from "../../hooks/useToken";
 
 const Login = () => {
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+
   const navigate = useNavigate();
   const location = useLocation();
   const {
@@ -20,16 +22,18 @@ const Login = () => {
     formState: { errors },
   } = useForm();
   const from = location.state?.from?.pathname || "/";
+  const [token] = useToken(googleUser || user);
 
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+    }
+  }, [token, from, navigate]);
   // when user in loading
   if (loading || googleLoading) {
     return <Spinner></Spinner>;
   }
-  // if user in in login then console log
-  if (user || googleUser) {
-    navigate(from, { replace: true });
-    console.log(user);
-  }
+
   // if login error
   let errorMessage;
   if (error) {
@@ -48,7 +52,6 @@ const Login = () => {
 
   // user login and password
   const onSubmit = (data) => {
-    console.log(data);
     signInWithEmailAndPassword(data.email, data.password);
   };
   return (
@@ -122,7 +125,7 @@ const Login = () => {
               </label>
             </div>
             <div>
-              <Link to="#" className="text-secondary">
+              <Link to="/forgetPassword" className="text-secondary">
                 Forget password
               </Link>
             </div>

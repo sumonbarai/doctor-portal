@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   useCreateUserWithEmailAndPassword,
   useUpdateProfile,
@@ -6,12 +6,14 @@ import {
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
+import useToken from "../../hooks/useToken";
 import Spinner from "../Shared/Spinner/Spinner";
 
 const SignUp = () => {
   const [createUserWithEmailAndPassword, user, loading] =
-    useCreateUserWithEmailAndPassword(auth);
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const [updateProfile] = useUpdateProfile(auth);
+
   const {
     register,
     handleSubmit,
@@ -19,6 +21,13 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
+
+  const [token] = useToken(user);
+  useEffect(() => {
+    if (token) {
+      navigate("/appointment");
+    }
+  }, []);
 
   // when user in loading
   if (loading) {
@@ -30,7 +39,6 @@ const SignUp = () => {
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
-    navigate("/appointment");
   };
   return (
     <div className="container mx-auto px-4 flex justify-center items-center h-[90vh]">
