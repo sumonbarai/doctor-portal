@@ -4,7 +4,7 @@ import RowUser from "./RowUser";
 const Users = () => {
   const [myUser, setMyUser] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/user", {
+    fetch("https://powerful-coast-15220.herokuapp.com/user", {
       method: "GET",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,

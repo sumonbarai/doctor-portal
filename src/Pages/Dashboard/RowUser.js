@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 const RowUser = ({ user, index }) => {
   const { email, roll } = user;
   const makeAdmin = () => {
-    fetch(`http://localhost:5000/user/admin/${email}`, {
+    fetch(`https://powerful-coast-15220.herokuapp.com/user/admin/${email}`, {
       method: "PUT",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
