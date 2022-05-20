@@ -16,6 +16,8 @@ import Myreview from "./Pages/Dashboard/Myreview";
 import MyHistory from "./Pages/Dashboard/MyHistory";
 
 import Users from "./Pages/Dashboard/Users";
+import AddDoctor from "./Pages/Dashboard/AddDoctor";
+import ManageDoctor from "./Pages/Dashboard/ManageDoctor";
 
 function App() {
   return (
@@ -49,6 +51,11 @@ function App() {
           <Route path="review" element={<Myreview></Myreview>}></Route>
           <Route path="history" element={<MyHistory></MyHistory>}></Route>
           <Route path="users" element={<Users></Users>}></Route>
+          <Route path="addDoctor" element={<AddDoctor></AddDoctor>}></Route>
+          <Route
+            path="manageDoctor"
+            element={<ManageDoctor></ManageDoctor>}
+          ></Route>
         </Route>
         <Route path="signUp" element={<SignUp></SignUp>} />
         <Route path="*" element={<NotFound></NotFound>} />
